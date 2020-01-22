@@ -172,7 +172,7 @@ COV(NMSPS,COVCODE,VERBOSITY) ; VEN/SMH - PUBLIC ENTRY POINT; Coverage calculatio
  S SURVGL=$NA(^TMP("%utSURVIVING-COHORT",$J))
  ;
  W !,"Loading routines to test coverage...",!
- D GETRTNS(.RTNS,NMSPS)
+ D GETRTNS(.RTNS,.NMSPS)
  ;
  ; Turn on Coverage Checking if we are not already running coverage
  I '$D(^TMP("%utcovrunning",$J)) N EXIT S EXIT=0 D  Q:EXIT
@@ -400,7 +400,7 @@ COVRPTLS(C,S,R,V) ;
  ;
 GETRTNS(RTNS,NMSPS) ; [Public] Get routines for namespaces
  ; .RTNS - Output. Initially empty
- ; NMSPS - Input: Namespaces
+ ; .NMSPS - Input: Namespaces
  ;
  I ($$GETSYS^%ut()=47) D  ; GT.M only!
  . N NMSP S NMSP=$G(NMSPS)
